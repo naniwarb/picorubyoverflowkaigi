@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PicoRuby Overflow Kaigi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Main Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, rgba(185, 22, 86, 0.1) 0%, transparent 70%);
+            overflow: hidden;
+        }
+
+        /* Floating particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: #B91656;
+            border-radius: 50%;
+            animation: float 20s infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Logo container */
+        .logo-container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Logo SVG */
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            filter: drop-shadow(0 0 30px rgba(185, 22, 86, 0.5));
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Title text */
+        .title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, #B91656 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 2rem);
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            opacity: 0.8;
+        }
+
+        /* Overflow effect */
+        .overflow-effect {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, #B91656 0%, transparent 100%);
+            opacity: 0.1;
+            animation: overflow 8s ease-in-out infinite;
+        }
+
+        @keyframes overflow {
+            0%, 100% {
+                transform: translateY(100%);
+            }
+            50% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Wave animation */
+        .wave {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .wave svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            animation: wave-motion 10s ease-in-out infinite;
+        }
+
+        @keyframes wave-motion {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .wave-path {
+            fill: #B91656;
+            fill-opacity: 0.2;
+            animation: wave-morph 8s ease-in-out infinite;
+        }
+
+        @keyframes wave-morph {
+            0%, 100% {
+                d: path("M0,200 C150,150 350,250 500,200 C650,150 850,250 1000,200 C1150,150 1350,250 1500,200 L1500,300 L0,300 Z");
+            }
+            33% {
+                d: path("M0,200 C150,250 350,150 500,200 C650,250 850,150 1000,200 C1150,250 1350,150 1500,200 L1500,300 L0,300 Z");
+            }
+            66% {
+                d: path("M0,200 C150,180 350,220 500,200 C650,180 850,220 1000,200 C1150,180 1350,220 1500,200 L1500,300 L0,300 Z");
+            }
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #B91656;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #B91656;
+            animation: expand 2s ease-in-out infinite;
+        }
+
+        @keyframes expand {
+            0%, 100% {
+                width: 100px;
+            }
+            50% {
+                width: 200px;
+            }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(185, 22, 86, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(185, 22, 86, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #B91656;
+            box-shadow: 0 20px 40px rgba(185, 22, 86, 0.3);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #B91656;
+        }
+
+        .card p {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #B91656 0%, #e91e63 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(185, 22, 86, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        /* Timetable styles */
+        .timetable {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .time-slot {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid #B91656;
+            border-radius: 0 10px 10px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .time-slot::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(185, 22, 86, 0.1) 100%);
+            transition: left 0.5s ease;
+        }
+
+        .time-slot:hover::before {
+            left: 0;
+        }
+
+        .time-slot:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .time {
+            flex-shrink: 0;
+            width: 120px;
+            font-weight: 600;
+            color: #B91656;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        .time-slot .content {
+            flex-grow: 1;
+            padding-left: 2rem;
+        }
+
+        .time-slot h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .time-slot p {
+            opacity: 0.8;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Staff styles */
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .staff-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(185, 22, 86, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .staff-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(185, 22, 86, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            border-color: #B91656;
+            box-shadow: 0 15px 30px rgba(185, 22, 86, 0.3);
+        }
+
+        .staff-avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #B91656 0%, #e91e63 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 5px 20px rgba(185, 22, 86, 0.3);
+        }
+
+        .staff-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .staff-role {
+            color: #B91656;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .staff-bio {
+            opacity: 0.8;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .time-slot {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .time {
+                width: auto;
+                margin-bottom: 0.5rem;
+            }
+            
+            .time-slot .content {
+                padding-left: 0;
+            }
+            
+            .staff-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="particles" id="particles"></div>
+        <div class="overflow-effect"></div>
+        <div class="wave">
+            <svg viewBox="0 0 1500 300" preserveAspectRatio="none">
+                <path class="wave-path" d="M0,200 C150,150 350,250 500,200 C650,150 850,250 1000,200 C1150,150 1350,250 1500,200 L1500,300 L0,300 Z"></path>
+            </svg>
+            <svg viewBox="0 0 1500 300" preserveAspectRatio="none" style="position: absolute; top: 20px; opacity: 0.5;">
+                <path class="wave-path" d="M0,200 C150,250 350,150 500,200 C650,250 850,150 1000,200 C1150,250 1350,150 1500,200 L1500,300 L0,300 Z" style="animation-delay: -2s;"></path>
+            </svg>
+        </div>
+        
+        <div class="logo-container">
+            <img src="./logo.png" alt="PicoRuby Overflow Kaigi Logo" class="logo">
+            <h1 class="title">PICORUBY</h1>
+            <h2 class="subtitle">OVERFLOW KAIGI</h2>
+            <div style="text-align: center; padding: 3rem 0;">
+                <a href="#" class="cta-button">Join Community</a>
+            </div>
+        </div>
+      </div>
+
+    <section class="section">
+        <h2 class="section-title">About</h2>
+        <div class="card">
+            <div class="card-content">
+                <h3>PicoRubyの可能性を解き放つ</h3>
+                <p>PicoRuby Overflow Kansaiは、組み込みシステムやIoTデバイスでRubyを活用する開発者のためのコミュニティです。関西から世界へ、新しい技術の波を起こします。</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-content">
+                <h3>コミュニティの力</h3>
+                <p>経験豊富な開発者から初心者まで、すべての人が学び、共有し、成長できる場所。知識とアイデアが溢れる、活気あるコミュニティを目指しています。</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-content">
+                <h3>イノベーションの源泉</h3>
+                <p>最新の技術トレンドやベストプラクティスを共有し、PicoRubyエコシステムの発展に貢献。関西から始まる技術革新の波に参加しましょう。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Time Table</h2>
+        <div class="timetable">
+            <div class="time-slot">
+                <div class="time">13:00 - 13:15</div>
+                <div class="content">
+                    <h4>Opening</h4>
+                    <p>イベント開始・趣旨説明</p>
+                </div>
+            </div>
+            
+            <div class="time-slot">
+                <div class="time">13:15 - 14:00</div>
+                <div class="content">
+                    <h4>Keynote: PicoRubyの現在と未来</h4>
+                    <p>PicoRubyの最新動向と今後のロードマップについて</p>
+                </div>
+            </div>
+            
+            <div class="time-slot">
+                <div class="time">14:00 - 14:30</div>
+                <div class="content">
+                    <h4>実践！IoTデバイスでのPicoRuby活用</h4>
+                    <p>実際のプロジェクトでの活用事例を紹介</p>
+                </div>
+            </div>
+            
+            <div class="time-slot">
+                <div class="time">14:30 - 14:45</div>
+                <div class="content">
+                    <h4>Break</h4>
+                    <p>休憩・ネットワーキング</p>
+                </div>
+            </div>
+            
+            <div class="time-slot">
+                <div class="time">14:45 - 15:30</div>
+                <div class="content">
+                    <h4>Lightning Talks</h4>
+                    <p>参加者による5分間のショートプレゼンテーション</p>
+                </div>
+            </div>
+            
+            <div class="time-slot">
+                <div class="time">15:30 - 16:30</div>
+                <div class="content">
+                    <h4>Workshop: はじめてのPicoRuby</h4>
+                    <p>ハンズオン形式でPicoRubyを体験</p>
+                </div>
+            </div>
+            
+            <div class="time-slot">
+                <div class="time">16:30 - 17:00</div>
+                <div class="content">
+                    <h4>Panel Discussion</h4>
+                    <p>組み込みRubyの未来について議論</p>
+                </div>
+            </div>
+            
+            <div class="time-slot">
+                <div class="time">17:00 - 17:15</div>
+                <div class="content">
+                    <h4>Closing</h4>
+                    <p>クロージング・次回予告</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Staff</h2>
+        <div class="staff-grid">
+            <div class="staff-card">
+                <div class="staff-avatar">
+                    <div class="avatar-placeholder">👤</div>
+                </div>
+                <h3>山田 太郎</h3>
+                <p class="staff-role">Organizer</p>
+                <p class="staff-bio">PicoRubyコミッターとして活動。組み込みシステムのエキスパート。</p>
+            </div>
+            
+            <div class="staff-card">
+                <div class="staff-avatar">
+                    <div class="avatar-placeholder">👤</div>
+                </div>
+                <h3>佐藤 花子</h3>
+                <p class="staff-role">Co-organizer</p>
+                <p class="staff-bio">IoTスタートアップCTO。Rubyistとして15年の経験。</p>
+            </div>
+            
+            <div class="staff-card">
+                <div class="staff-avatar">
+                    <div class="avatar-placeholder">👤</div>
+                </div>
+                <h3>鈴木 一郎</h3>
+                <p class="staff-role">Technical Staff</p>
+                <p class="staff-bio">ハードウェアエンジニア。PicoRuby製品の開発に従事。</p>
+            </div>
+            
+            <div class="staff-card">
+                <div class="staff-avatar">
+                    <div class="avatar-placeholder">👤</div>
+                </div>
+                <h3>田中 美咲</h3>
+                <p class="staff-role">Community Manager</p>
+                <p class="staff-bio">関西Ruby会議の運営経験者。コミュニティビルディングのプロ。</p>
+            </div>
+            
+            <div class="staff-card">
+                <div class="staff-avatar">
+                    <div class="avatar-placeholder">👤</div>
+                </div>
+                <h3>高橋 健</h3>
+                <p class="staff-role">Workshop Leader</p>
+                <p class="staff-bio">教育機関でPicoRubyを教える講師。初心者向けコンテンツ作成。</p>
+            </div>
+            
+            <div class="staff-card">
+                <div class="staff-avatar">
+                    <div class="avatar-placeholder">👤</div>
+                </div>
+                <h3>渡辺 さくら</h3>
+                <p class="staff-role">Design & PR</p>
+                <p class="staff-bio">テクニカルライター。技術の魅力を分かりやすく伝える。</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Generate floating particles
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random size
+            const size = Math.random() * 10 + 5;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            
+            // Random position
+            particle.style.left = Math.random() * 100 + '%';
+            
+            // Random animation delay and duration
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 20 + 20) + 's';
+            
+            particlesContainer.appendChild(particle);
+        }
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
