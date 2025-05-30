@@ -366,7 +366,35 @@
             opacity: 0.9;
         }
 
-        /* CTA Button */
+        /* Button */
+        .button-container {
+            display: flex;
+        }
+        
+        .button-wrapper {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .button-wrapper:first-child {
+            margin-right: 2rem;
+        }
+
+        @media (max-width: 640px) {
+            .button-container {
+                flex-direction: column;
+            }
+
+            .button-wrapper {
+                padding: 0 !important;
+            }
+            
+            .button-wrapper:first-child {
+                margin-right: 0;
+                margin-bottom: .5rem;
+            }
+        }
+
         .cta-button {
             display: inline-block;
             padding: 1rem 3rem;
@@ -612,11 +640,11 @@
                 <span class="date-text">2025/7/19</span>
                 <span class="date-day">(Sat.)</span>
             </div>
-            <div style="display: flex;">
-                <div style="text-align: center; padding: 3rem 0; margin-right: 2rem;">
+            <div class="button-container">
+                <div class="button-wrapper">
                     <a href="https://naniwarb.doorkeeper.jp/events/185053" target="_blank" class="cta-button">Register Now</a>
                 </div>
-                <div style="text-align: center; padding: 3rem 0;">
+                <div class="button-wrapper">
                     <a href="https://forms.gle/NsRZHW6MTV6aYPkF9" target="_blank" class="cta-button">Call for Proposal</a>
                 </div>
             </div>
