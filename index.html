@@ -542,6 +542,111 @@
             margin: 0;
         }
 
+        /* Showcase Session styles */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .showcase-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(185, 22, 86, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .showcase-card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(185, 22, 86, 0.15) 0%, transparent 50%);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .showcase-card:hover::before {
+            top: -150%;
+            left: -150%;
+            opacity: 1;
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: #B91656;
+            box-shadow: 0 15px 35px rgba(185, 22, 86, 0.4);
+        }
+
+        .showcase-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #B91656 0%, #e91e63 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(185, 22, 86, 0.4);
+        }
+
+        .showcase-content {
+            position: relative;
+            z-index: 1;
+            margin-top: 1.5rem;
+        }
+
+        .showcase-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .showcase-author {
+            color: #B91656;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .showcase-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        .showcase-info {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(185, 22, 86, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(185, 22, 86, 0.2);
+        }
+
+        .showcase-info h3 {
+            color: #B91656;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .showcase-info p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
         /* Staff styles */
         .staff-grid {
             display: grid;
@@ -836,6 +941,57 @@
                 <div class="content">
                     <h4>懇親会</h4>
                     <p>会場の近辺で懇親会を開催予定です🍻</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Showcase Session</h2>
+        <div class="showcase-info">
+            <h3>ショーケースセッションについて</h3>
+            <p>ショーケースセッションはポスターセッションに展示を加えたものです。<br>
+                参加者との直接的な対話を通じて、より深い技術交流を実現します。</p>
+        </div>
+
+        <div class="showcase-grid">
+            <div class="showcase-card">
+                <div class="showcase-number">1</div>
+                <div class="showcase-content">
+                    <h3 class="showcase-title">センサーいろいろ比べてみた！PicoRubyでつくる操作体験</h3>
+                    <p class="showcase-author">発表者: chobishiba</p>
+                </div>
+            </div>
+
+            <div class="showcase-card">
+                <div class="showcase-number">2</div>
+                <div class="showcase-content">
+                    <h3 class="showcase-title">今更作るFMラジオ~実用電子工作ことはじめ~</h3>
+                    <p class="showcase-author">発表者: hachi(Hayao Kimura)</p>
+                </div>
+            </div>
+
+            <div class="showcase-card">
+                <div class="showcase-number">3</div>
+                <div class="showcase-content">
+                    <h3 class="showcase-title">PicoRuby/R2P2で自分だけのコンピュータを作ろう</h3>
+                    <p class="showcase-author">発表者: kishima</p>
+                </div>
+            </div>
+
+            <div class="showcase-card">
+                <div class="showcase-number">4</div>
+                <div class="showcase-content">
+                    <h3 class="showcase-title">Rubyでつくって子供と遊ぼう</h3>
+                    <p class="showcase-author">kinoppyd</p>
+                </div>
+            </div>
+
+            <div class="showcase-card">
+                <div class="showcase-number">5</div>
+                <div class="showcase-content">
+                    <h3 class="showcase-title">PicoRubyの表現力の拡張～アナログコンピュータとの出会い～</h3>
+                    <p class="showcase-author">すぎうり</p>
                 </div>
             </div>
         </div>
