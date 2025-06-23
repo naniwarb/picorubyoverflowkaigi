@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,12 +69,15 @@
                 transform: translateY(100vh) rotate(0deg);
                 opacity: 0;
             }
+
             10% {
                 opacity: 0.3;
             }
+
             90% {
                 opacity: 0.3;
             }
+
             100% {
                 transform: translateY(-100vh) rotate(360deg);
                 opacity: 0;
@@ -93,9 +97,11 @@
             0% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.05);
             }
+
             100% {
                 transform: scale(1);
             }
@@ -113,6 +119,7 @@
             0% {
                 transform: rotate(0deg);
             }
+
             100% {
                 transform: rotate(360deg);
             }
@@ -137,9 +144,11 @@
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
@@ -176,9 +185,12 @@
         }
 
         @keyframes date-glow {
-            0%, 100% {
+
+            0%,
+            100% {
                 box-shadow: 0 0 20px rgba(185, 22, 86, 0.3);
             }
+
             50% {
                 box-shadow: 0 0 40px rgba(185, 22, 86, 0.6);
             }
@@ -199,6 +211,7 @@
             0% {
                 left: -100%;
             }
+
             100% {
                 left: 100%;
             }
@@ -228,9 +241,12 @@
         }
 
         @keyframes overflow {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(100%);
             }
+
             50% {
                 transform: translateY(0);
             }
@@ -259,6 +275,7 @@
             0% {
                 transform: translateX(0);
             }
+
             100% {
                 transform: translateX(-50%);
             }
@@ -271,12 +288,16 @@
         }
 
         @keyframes wave-morph {
-            0%, 100% {
+
+            0%,
+            100% {
                 d: path("M0,200 C150,150 350,250 500,200 C650,150 850,250 1000,200 C1150,150 1350,250 1500,200 L1500,300 L0,300 Z");
             }
+
             33% {
                 d: path("M0,200 C150,250 350,150 500,200 C650,250 850,150 1000,200 C1150,250 1350,150 1500,200 L1500,300 L0,300 Z");
             }
+
             66% {
                 d: path("M0,200 C150,180 350,220 500,200 C650,180 850,220 1000,200 C1150,180 1350,220 1500,200 L1500,300 L0,300 Z");
             }
@@ -313,9 +334,12 @@
         }
 
         @keyframes expand {
-            0%, 100% {
+
+            0%,
+            100% {
                 width: 100px;
             }
+
             50% {
                 width: 200px;
             }
@@ -370,12 +394,12 @@
         .button-container {
             display: flex;
         }
-        
+
         .button-wrapper {
             text-align: center;
             padding: 3rem 0;
         }
-        
+
         .button-wrapper:first-child {
             margin-right: 2rem;
         }
@@ -388,7 +412,7 @@
             .button-wrapper {
                 padding: 0 !important;
             }
-            
+
             .button-wrapper:first-child {
                 margin-right: 0;
                 margin-bottom: .5rem;
@@ -437,7 +461,7 @@
                 width: 150px;
                 height: 150px;
             }
-            
+
             .section {
                 padding: 3rem 1rem;
             }
@@ -612,16 +636,16 @@
                 flex-direction: column;
                 padding: 1rem;
             }
-            
+
             .time {
                 width: auto;
                 margin-bottom: 0.5rem;
             }
-            
+
             .time-slot .content {
                 padding-left: 0;
             }
-            
+
             .staff-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -629,19 +653,24 @@
         }
     </style>
 </head>
+
 <body>
     <div class="hero">
         <div class="particles" id="particles"></div>
         <div class="overflow-effect"></div>
         <div class="wave">
             <svg viewBox="0 0 1500 300" preserveAspectRatio="none">
-                <path class="wave-path" d="M0,200 C150,150 350,250 500,200 C650,150 850,250 1000,200 C1150,150 1350,250 1500,200 L1500,300 L0,300 Z"></path>
+                <path class="wave-path"
+                    d="M0,200 C150,150 350,250 500,200 C650,150 850,250 1000,200 C1150,150 1350,250 1500,200 L1500,300 L0,300 Z">
+                </path>
             </svg>
             <svg viewBox="0 0 1500 300" preserveAspectRatio="none" style="position: absolute; top: 20px; opacity: 0.5;">
-                <path class="wave-path" d="M0,200 C150,250 350,150 500,200 C650,250 850,150 1000,200 C1150,250 1350,150 1500,200 L1500,300 L0,300 Z" style="animation-delay: -2s;"></path>
+                <path class="wave-path"
+                    d="M0,200 C150,250 350,150 500,200 C650,250 850,150 1000,200 C1150,250 1350,150 1500,200 L1500,300 L0,300 Z"
+                    style="animation-delay: -2s;"></path>
             </svg>
         </div>
-        
+
         <div class="logo-container">
             <img src="./logo.png" alt="PicoRuby Overflow Kaigi Logo" class="logo">
             <h1 class="title">PICORUBY</h1>
@@ -651,25 +680,28 @@
                 <span class="date-day">(Sat.)</span>
             </div>
             <div class="button-wrapper">
-                <a href="https://naniwarb.doorkeeper.jp/events/185053" target="_blank" class="cta-button">Register Now</a>
+                <a href="https://naniwarb.doorkeeper.jp/events/185053" target="_blank" class="cta-button">Register
+                    Now</a>
             </div>
         </div>
-      </div>
+    </div>
 
     <section class="section">
         <h2 class="section-title">About</h2>
         <div class="card">
             <div class="card-content">
                 <h3>PicoRuby Overflow会議とは</h3>
-                <p>「PicoRuby Overflow会議」は、2025年7月19日(土)に大阪のアールスリーインスティテュート（gusuku Ashibinaa OSAKA）にて開催する、関西Ruby会議08 やRubyKaigi 2025 に応募したものの採択されなかったPicoRuby に関連するトークを中心に、PicoRuby コミュニティのアイデアや知見を共有する場を提供するカンファレンスです。</p>
+                <p>「PicoRuby Overflow会議」は、2025年7月19日(土)に大阪のアールスリーインスティテュート（gusuku Ashibinaa OSAKA）にて開催する、関西Ruby会議08
+                    やRubyKaigi 2025 に応募したものの採択されなかったPicoRuby に関連するトークを中心に、PicoRuby コミュニティのアイデアや知見を共有する場を提供するカンファレンスです。
+                </p>
             </div>
         </div>
-        
+
         <div class="card">
             <div class="card-content">
                 <h3>私たちが目指すもの</h3>
                 <p>
-                  我々はPicoRubyに対する熱量や機運に新たな発表機会を提供します。PicoRubyの開発者やユーザーが集まり、技術的な知見を深め、ネットワークを広げる場となるように共にPicoRubyを盛り上げていきましょう。
+                    我々はPicoRubyに対する熱量や機運に新たな発表機会を提供します。PicoRubyの開発者やユーザーが集まり、技術的な知見を深め、ネットワークを広げる場となるように共にPicoRubyを盛り上げていきましょう。
                 </p>
             </div>
         </div>
@@ -684,7 +716,7 @@
                     <h4>Door Open!!!</h4>
                 </div>
             </div>
-            
+
             <div class="time-slot">
                 <div class="time">12:00 - 17:00</div>
                 <div class="content">
@@ -692,7 +724,7 @@
                     <p>Coming Soon...</p>
                 </div>
             </div>
-            
+
             <div class="time-slot">
                 <div class="time">17:00 -</div>
                 <div class="content">
@@ -706,7 +738,8 @@
     <section class="section">
         <h2 class="section-title">Events</h2>
         <a href="https://naniwarb.doorkeeper.jp/events/185275" target="_blank">
-            <img src="./after_meetup.png" alt="After Meetup" style="max-width: 600px; margin: 0 auto; display: block; border-radius: 10px;" class="events">
+            <img src="./after_meetup.png" alt="After Meetup"
+                style="max-width: 600px; margin: 0 auto; display: block; border-radius: 10px;" class="events">
         </a>
     </section>
 
@@ -716,77 +749,85 @@
             <a href="https://github.com/ogom" target="_blank" class="staff-link">
                 <div class="staff-card">
                     <div class="staff-avatar">
-                        <img src="https://avatars.githubusercontent.com/u/471923?v=4" alt="ogom" class="avatar-placeholder">
+                        <img src="https://avatars.githubusercontent.com/u/471923?v=4" alt="ogom"
+                            class="avatar-placeholder">
                     </div>
                     <h3>おごもり</h3>
                     <p class="staff-role">Chief Organizer</p>
                 </div>
             </a>
-            
+
             <a href="https://github.com/makicamel" target="_blank" class="staff-link">
                 <div class="staff-card">
                     <div class="staff-avatar">
-                        <img src="https://avatars.githubusercontent.com/u/30112374?v=4" alt="makicamel" class="avatar-placeholder">
+                        <img src="https://avatars.githubusercontent.com/u/30112374?v=4" alt="makicamel"
+                            class="avatar-placeholder">
                     </div>
                     <h3>makicamel</h3>
                     <p class="staff-role">Organizer</p>
                 </div>
             </a>
-            
+
             <a href="https://github.com/youchan" target="_blank" class="staff-link">
                 <div class="staff-card">
                     <div class="staff-avatar">
-                        <img src="https://avatars.githubusercontent.com/u/222183?v=4" alt="youchan" class="avatar-placeholder">
+                        <img src="https://avatars.githubusercontent.com/u/222183?v=4" alt="youchan"
+                            class="avatar-placeholder">
                     </div>
                     <h3>youchan</h3>
                     <p class="staff-role">Organizer</p>
                 </div>
             </a>
-            
+
             <a href="https://github.com/ydah" target="_blank" class="staff-link">
                 <div class="staff-card">
                     <div class="staff-avatar">
-                        <img src="https://avatars.githubusercontent.com/u/13041216?v=4" alt="ydah" class="avatar-placeholder">
+                        <img src="https://avatars.githubusercontent.com/u/13041216?v=4" alt="ydah"
+                            class="avatar-placeholder">
                     </div>
                     <h3>ydah</h3>
                     <p class="staff-role">Organizer & Designer</p>
                 </div>
             </a>
-            
+
             <a href="https://github.com/hayaokimura" target="_blank" class="staff-link">
                 <div class="staff-card">
                     <div class="staff-avatar">
-                        <img src="https://avatars.githubusercontent.com/u/8371588?v=4" alt="hachi" class="avatar-placeholder">
+                        <img src="https://avatars.githubusercontent.com/u/8371588?v=4" alt="hachi"
+                            class="avatar-placeholder">
                     </div>
                     <h3>hachi</h3>
                     <p class="staff-role">Organizer</p>
                 </div>
             </a>
-            
+
             <a href="https://github.com/hasumikin" target="_blank" class="staff-link">
                 <div class="staff-card">
                     <div class="staff-avatar">
-                        <img src="https://avatars.githubusercontent.com/u/8454208?v=4" alt="hasumikin" class="avatar-placeholder">
+                        <img src="https://avatars.githubusercontent.com/u/8454208?v=4" alt="hasumikin"
+                            class="avatar-placeholder">
                     </div>
                     <h3>hasumikin</h3>
                     <p class="staff-role">Organizer</p>
                 </div>
             </a>
-            
+
             <a href="https://github.com/uproad" target="_blank" class="staff-link">
                 <div class="staff-card">
                     <div class="staff-avatar">
-                        <img src="https://avatars.githubusercontent.com/u/7349115?v=4" alt="すぎうり" class="avatar-placeholder">
+                        <img src="https://avatars.githubusercontent.com/u/7349115?v=4" alt="すぎうり"
+                            class="avatar-placeholder">
                     </div>
                     <h3>すぎうり</h3>
                     <p class="staff-role">Organizer</p>
                 </div>
             </a>
-            
+
             <a href="https://github.com/znz" target="_blank" class="staff-link">
                 <div class="staff-card">
                     <div class="staff-avatar">
-                        <img src="https://avatars.githubusercontent.com/u/11857?v=4" alt="znz" class="avatar-placeholder">
+                        <img src="https://avatars.githubusercontent.com/u/11857?v=4" alt="znz"
+                            class="avatar-placeholder">
                     </div>
                     <h3>znz</h3>
                     <p class="staff-role">Organizer</p>
@@ -799,26 +840,26 @@
         // Generate floating particles
         const particlesContainer = document.getElementById('particles');
         const particleCount = 50;
-        
+
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
-            
+
             // Random size
             const size = Math.random() * 10 + 5;
             particle.style.width = size + 'px';
             particle.style.height = size + 'px';
-            
+
             // Random position
             particle.style.left = Math.random() * 100 + '%';
-            
+
             // Random animation delay and duration
             particle.style.animationDelay = Math.random() * 20 + 's';
             particle.style.animationDuration = (Math.random() * 20 + 20) + 's';
-            
+
             particlesContainer.appendChild(particle);
         }
-        
+
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -833,4 +874,5 @@
         });
     </script>
 </body>
+
 </html>
