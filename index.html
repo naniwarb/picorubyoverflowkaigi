@@ -736,6 +736,154 @@
             z-index: 1;
         }
 
+        /* Call for Exhibits styles */
+        .exhibit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .exhibit-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(185, 22, 86, 0.4);
+            border-radius: 25px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .exhibit-card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(185, 22, 86, 0.2) 0%, transparent 60%);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .exhibit-card:hover::before {
+            top: -150%;
+            left: -150%;
+            opacity: 1;
+        }
+
+        .exhibit-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            border-color: #B91656;
+            box-shadow: 0 25px 50px rgba(185, 22, 86, 0.4);
+        }
+
+        .exhibit-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #B91656 0%, #e91e63 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: 0 8px 25px rgba(185, 22, 86, 0.4);
+            position: relative;
+            z-index: 1;
+            animation: icon-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes icon-pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(185, 22, 86, 0.4);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 12px 35px rgba(185, 22, 86, 0.6);
+            }
+        }
+
+        .exhibit-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .exhibit-card ul {
+            list-style: none;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .exhibit-card li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .exhibit-card li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #B91656;
+            font-size: 0.8rem;
+            top: 0.9rem;
+        }
+
+        .exhibit-note {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(185, 22, 86, 0.1) 0%, rgba(185, 22, 86, 0.05) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(185, 22, 86, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exhibit-note::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #B91656 50%, transparent 100%);
+            animation: note-scan 5s ease-in-out infinite;
+        }
+
+        @keyframes note-scan {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .exhibit-note h4 {
+            color: #B91656;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .exhibit-note p {
+            opacity: 0.9;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
         @media (max-width: 768px) {
             .time-slot {
                 flex-direction: column;
@@ -754,6 +902,15 @@
             .staff-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+            }
+
+            .exhibit-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .exhibit-card {
+                padding: 2rem;
             }
         }
     </style>
@@ -1003,6 +1160,40 @@
                     <p class="showcase-author">すぎうり</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Call for Exhibits</h2>
+        <div class="exhibit-grid">
+            <div class="exhibit-card">
+                <div class="exhibit-icon">🛠️</div>
+                <h3>作品展示募集</h3>
+                <ul>
+                    <li>PicoRubyで作った作品・デバイス</li>
+                    <li>IoTプロジェクトやプロトタイプ</li>
+                    <li>電子工作・自作ハードウェア</li>
+                </ul>
+            </div>
+
+            <div class="exhibit-card">
+                <div class="exhibit-icon">📚</div>
+                <h3>書籍展示募集</h3>
+                <ul>
+                    <li>PicoRuby関連の技術書、同人誌</li>
+                    <li>組み込み・IoT開発の参考書</li>
+                    <li>電子工作・マイコン関連書籍</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exhibit-note">
+            <h4>展示について</h4>
+            <p>
+                会場に作品や書籍を持ち込んで展示していただくことが可能です。<br>
+                参加者同士の交流や知識共有の場として、ぜひご活用ください。<br>
+                展示をご希望の方は、当日会場にお持ちください。
+            </p>
         </div>
     </section>
 
